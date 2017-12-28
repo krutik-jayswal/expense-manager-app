@@ -3,6 +3,9 @@
   "project": {
     "name": "expense-manager-app"
   },
+  "scripts": [
+  "../node_modules/hammerjs/hammer.min.js"
+  ],
   "apps": [
     {
       "root": "src",

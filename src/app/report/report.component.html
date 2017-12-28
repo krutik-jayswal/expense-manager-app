@@ -1,0 +1,15 @@
+<mat-form-field>
+    <mat-select placeholder="Year">
+        <mat-option *ngFor="let bank of banks" [value]="bank.value">
+              {{ bank.viewValue }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<mat-form-field>
+    <mat-select placeholder="Month">
+        <mat-option *ngFor="let bank of banks" [value]="bank.value">
+              {{ bank.viewValue }}
+        </mat-option>
+    </mat-select>
+</mat-form-field>
