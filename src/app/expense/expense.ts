@@ -1,5 +1,5 @@
 import { Category } from '../category/Category';
-import { Bank } from '../bank/Bank';
+import { Account } from '../account/Account';
 
 export class Expense{
 
@@ -7,12 +7,12 @@ export class Expense{
     expenseName:string;
     amount:number;
     category:Category;
-    bank:Bank;      
+    account:Account;      
 
     constructor(expenseInfo:any) {
         this.expenseName = expenseInfo.name;
         this.amount = expenseInfo.amount;
         this.category = new Category(expenseInfo.category);
-        this.bank = new Bank(expenseInfo.bank);
+        this.account = new Account(expenseInfo.bank);
     }
 }

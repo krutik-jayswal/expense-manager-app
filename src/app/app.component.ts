@@ -23,4 +23,7 @@ export class AppComponent {
    viewReport(){
        this.router.navigateByUrl('/report');
    }
+   viewSummary(){
+    this.router.navigateByUrl('/summary');
+}
 }

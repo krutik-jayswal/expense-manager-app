@@ -4,6 +4,10 @@ import { INCOMES } from '../data/mock-incomes';
 
 @Injectable()
 export class IncomeService {
+  saveIncome(income){
+    console.log(income);
+  }
+ 
   getIncomes(): Promise<Income[]> {
     return Promise.resolve(INCOMES);
   }

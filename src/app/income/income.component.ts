@@ -19,4 +19,9 @@ export class IncomeComponent implements OnInit {
   getIncomes(): void {
     this.incomeService.getIncomes().then(incomes => this.incomes = incomes);
   }
+
+  saveIncome(values): void {    
+    this.incomeService.saveIncome(new Income(values));
+  }
+
 }

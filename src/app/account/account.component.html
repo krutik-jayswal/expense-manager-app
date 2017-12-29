@@ -1,0 +1,25 @@
+<h2 mat-dialog-title>Account Details</h2>
+  <form class="bank-form" #accountForm="ngForm">
+    <mat-form-field class="example-full-width displayblock">
+        <input matInput placeholder="Name" value="ICICI Bank"  name="name" [(ngModel)]="name">
+    </mat-form-field>
+  
+    <mat-form-field class="example-full-width displayblock">
+      <mat-select placeholder="Select Type"class="example-full-width"  name="type" [(ngModel)]="type">
+        <mat-option *ngFor="let type of accountTypes" [value]="type">
+          {{ type }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width displayblock">
+      <input matInput placeholder="Current Balance/Bill" value="0.00"  name="balance" [(ngModel)]="balance">
+    </mat-form-field>
+
+
+    <mat-dialog-actions>
+      <button  mat-raised-button color="primary" type="submit" (click)="saveAccount(accountForm.value)">Save</button>
+      <!-- Can optionally provide a result for the closing dialog. -->
+      <button  mat-raised-button color="primary"[mat-dialog-close]="true">Close</button>
+    </mat-dialog-actions>
+  </form>
