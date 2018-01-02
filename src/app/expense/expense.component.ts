@@ -27,18 +27,11 @@ export class ExpenseComponent implements OnInit {
   { 
       iconRegistry.addSvgIcon('plus',
             sanitizer.bypassSecurityTrustResourceUrl('/assets/icon/plus.svg'));
-            gapiService.onLoad().subscribe(()=> {
-              console.log(gapiService.getConfig());
-           });
-           expenseService.signIn();
-           
   }
 
   saveExpense(expenseInfo){
     this.expense = new Expense(expenseInfo.value);
-    this.expenseService.saveExpense(this.expense);
-    console.log(this.expenseService.getToken());
-           
+    this.expenseService.saveExpense(this.expense);           
   }
   
   ngOnInit(): void {
@@ -53,8 +46,6 @@ export class ExpenseComponent implements OnInit {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('Values');
-      console.log(result);
     });
   }
 }

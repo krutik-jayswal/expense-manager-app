@@ -11,10 +11,13 @@ import { IncomeComponent } from './income/income.component';
 import { ExpenseComponent } from './expense/expense.component';
 import { ReportComponent } from './report/report.component';
 import { SummaryComponent } from './summary/summary.component';
+import { UserComponent } from './user/user.component';
+
 import { GoogleApiModule } from '../../node_modules/ng-gapi/lib/GoogleApiModule';
 //import { NgGapiClientConfig } from '../../node_modules/ng-gapi//GoogleApiConfig;
 
 import { IncomeService } from './income/income.service';
+import { UserService } from './user/user.service';
 import { ExpenseService } from './expense/expense.service';
 import { HttpClientModule } from '@angular/common/http';
 
@@ -65,9 +68,10 @@ import { AccountComponent } from './account/account.component';
 		ReportComponent,
 		ExpenseComponent,
 		SummaryComponent,
+		UserComponent,
 		AccountComponent
   ],
-  providers: [ExpenseService,IncomeService],
+  providers: [ExpenseService,IncomeService,UserService],
 	bootstrap: [AppComponent],
 	entryComponents: [
     AccountComponent

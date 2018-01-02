@@ -1,10 +1,10 @@
 <!--The content below is only a placeholder and can be replaced.-->
-<nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #1976d2;color:white;">
+<nav *ngIf="isLoggedIn()" class="navbar navbar-inverse navbar-fixed-top" style="background-color: #1976d2;color:white;">
 	<button mat-button (click)="routeToExpense()">Expense</button>
 	<button mat-button (click)="routeToIncome()">Income</button>
 	<button mat-button (click)="viewSummary()">Summary</button>
 	<button mat-button (click)="viewReport()">Report</button>
+	<button style="float: right;" mat-button (click)="logout()">Logout</button>
 </nav>
-
 
 <router-outlet></router-outlet> 
