@@ -4,10 +4,15 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 
+import { NG_GAPI_CONFIG } from '../../node_modules/ng-gapi/lib/GoogleApiService';
+//import { NG_GAPI_CONFIG } from'./google/GoogleApiService';
+
 import { IncomeComponent } from './income/income.component';
 import { ExpenseComponent } from './expense/expense.component';
 import { ReportComponent } from './report/report.component';
 import { SummaryComponent } from './summary/summary.component';
+import { GoogleApiModule } from '../../node_modules/ng-gapi/lib/GoogleApiModule';
+//import { NgGapiClientConfig } from '../../node_modules/ng-gapi//GoogleApiConfig;
 
 import { IncomeService } from './income/income.service';
 import { ExpenseService } from './expense/expense.service';
@@ -39,7 +44,20 @@ import { AccountComponent } from './account/account.component';
 		MatNativeDateModule,
 		MatButtonModule,
 		MatDialogModule,
-		HttpClientModule
+		HttpClientModule,
+		GoogleApiModule.forRoot({
+			provide: NG_GAPI_CONFIG,
+			useValue: {
+				client_id: "323522708386-m3juuqim2vbpuug0gmmk172n5fv4seod.apps.googleusercontent.com",
+				discoveryDocs: ["https://analyticsreporting.googleapis.com/$discovery/rest?version=v4"],
+				scope: [
+						"https://www.googleapis.com/auth/analytics.readonly",
+						"https://www.googleapis.com/auth/analytics"
+				].join(" "),
+				redirect_uri:"http://localhost:4200",
+				client_secret:"Ro-w0Zkv6gPiGt0qJAlil4_i"
+		}
+		}),
   ],
   declarations: [
     AppComponent,

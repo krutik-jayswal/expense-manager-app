@@ -6,7 +6,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA} from '@angular/material';
 import { AccountComponent } from '../account/account.component';
 import {MatIconRegistry} from '@angular/material';
 import {DomSanitizer} from '@angular/platform-browser';
-
+import { GoogleApiService } from '../../../node_modules/ng-gapi/lib/GoogleApiService';
 
 @Component({
   templateUrl: './expense.component.html',
@@ -21,16 +21,24 @@ export class ExpenseComponent implements OnInit {
       private expenseService: ExpenseService,
       public dialog: MatDialog,
       iconRegistry: MatIconRegistry, 
-      sanitizer: DomSanitizer
+      sanitizer: DomSanitizer,
+      gapiService: GoogleApiService
     )
   { 
       iconRegistry.addSvgIcon('plus',
             sanitizer.bypassSecurityTrustResourceUrl('/assets/icon/plus.svg'));
+            gapiService.onLoad().subscribe(()=> {
+              console.log(gapiService.getConfig());
+           });
+           expenseService.signIn();
+           
   }
 
   saveExpense(expenseInfo){
     this.expense = new Expense(expenseInfo.value);
     this.expenseService.saveExpense(this.expense);
+    console.log(this.expenseService.getToken());
+           
   }
   
   ngOnInit(): void {
