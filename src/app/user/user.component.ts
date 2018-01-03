@@ -7,13 +7,18 @@ import { Router } from '@angular/router';
   styleUrls:['./user.component.css']
 })
 export class UserComponent implements OnInit {
+  public userName:string=null;
   constructor(private userService:UserService,
               private router: Router) { }
  
    ngOnInit(): void {
-     
+     this.userName=this.userService.getCurrentUser();
    } 
    login(){
       this.userService.signIn();
    }  
+   isLoggedIn(): boolean{
+     return this.userService.isLoggedIn();
+   }
+   
 }

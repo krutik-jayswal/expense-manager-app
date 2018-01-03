@@ -11,6 +11,7 @@ import GoogleAuth = gapi.auth2.GoogleAuth;
 @Injectable()
 export class UserService {
     public static SESSION_STORAGE_KEY: string = 'accessToken';
+    public static USERNAME:string = "username";
     private user: gapi.auth2.GoogleUser;
 
     constructor(private googleAuth: GoogleAuthService,
@@ -34,26 +35,25 @@ export class UserService {
 
     public isLoggedIn(): boolean {
         if(sessionStorage.getItem("accessToken") != "null" && sessionStorage.getItem("accessToken") != null){
-            console.log("is logged in true :"+sessionStorage.getItem("accessToken"));
             return true;
         }else{
-            console.log("is logged in false :"+sessionStorage.getItem("accessToken"));
             return false;
         }
     }
-    public getCurrentUser(): void {
-        console.log(sessionStorage.getItem(UserService.SESSION_STORAGE_KEY));
+    public getCurrentUser(): string {
+        return sessionStorage.getItem(UserService.USERNAME);
     }
 
     public logout() {
         sessionStorage.setItem(UserService.SESSION_STORAGE_KEY, null);
+        sessionStorage.setItem(UserService.USERNAME,null);
     }
     
     private signInSuccessHandler(res: gapi.auth2.GoogleUser) {
+        console.log("Response :"+res)
             this.user = res;
-            sessionStorage.setItem(
-                UserService.SESSION_STORAGE_KEY, res.getAuthResponse().access_token
-            );
+            sessionStorage.setItem(UserService.SESSION_STORAGE_KEY, res.getAuthResponse().access_token);
+            sessionStorage.setItem(UserService.USERNAME,res.getBasicProfile().getName());
             this.router.navigateByUrl("/expense");
             window.location.reload();
     }

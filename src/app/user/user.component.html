@@ -1,6 +1,12 @@
-<div id="gSignInWrapper" style="padding: 20% 37%;" (click)="login()">    
-    <div id="customBtn" class="customGPlusSignIn">
-      <span class="buttonText">Sign in with</span>
-      <span class="icon"></span>
-    </div>
+<div *ngIf="!isLoggedIn()" id="gSignInWrapper" style="padding: 20% 37%;" (click)="login()">    
+  <div id="customBtn" class="customGPlusSignIn">
+    <span class="buttonText">Sign in with</span>
+    <span class="icon"></span>
+  </div>
 </div>
+<div *ngIf="isLoggedIn()" id="gSignInWrapper" style="padding: 20% 37%;">    
+  <div id="customBtn" class="customGPlusSignIn">
+  <span class="buttonLabel">{{userName}}</span>
+  </div>
+</div>
+
